@@ -41,14 +41,16 @@ r2 = [x + barWidth for x in r1]
 r3 = [x + barWidth for x in r2]
 
 # Make the plot
-plt.bar(r1, bars1, color='green', width=barWidth, edgecolor='white', label='Positive')
-plt.bar(r2, bars2, color='grey', width=barWidth, edgecolor='white', label='Neutral')
-plt.bar(r3, bars3, color='red', width=barWidth, edgecolor='white', label='Negative')
+plt.bar(r1, bars1, color='green', width=barWidth, edgecolor='white', label='Positive', hatch='\\')
+plt.bar(r2, bars2, color='grey', width=barWidth, edgecolor='black', label='Neutral')
+plt.bar(r3, bars3, color='red', width=barWidth, edgecolor='black', label='Negative', hatch='\\')
 
+# plt.ylim(0, 18)
 # Add xticks on the middle of the group bars
 plt.xlabel('Year')
 plt.ylabel('Number of Songs')
 plt.xticks([r + barWidth for r in range(len(bars1))], list(o_counts.keys()), rotation=45)
+plt.yticks(np.arange(min(bars1), max(bars1)+1, 2.0))
 
 plt.title('Mentions of Donald Trump in Rap Songs by Sentiment')
 plt.legend()
